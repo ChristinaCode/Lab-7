@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Practice 4</title>
+	<h1>EECS 348 Lab Seven Practice Four</h1>
+
+</head
+<body>
+
+    <form method="post"> 
+        <label for="number">Enter a number: </label> 
+        <input type="number" name="number" id="number" required> 
+        <br><br> 
+        <input type="submit" value="Submit"> 
+    </form>
+    
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $number = $_POST["number"];
+        if (is_numeric($number) && $number > 0) {
+            echo "<table border='1'>";
+            
+            //Creates the column headers
+            echo "<tr><th></th>";
+            for ($i = 1; $i <= $number; $i++) {
+                echo "<th>$i</th>";
+            }
+            echo "</tr>";
+            
+            //Creates the multiplication table
+            for ($i = 1; $i <= $number; $i++) {
+                echo "<tr><th>$i</th>";
+                for ($j = 1; $j <= $number; $j++) {
+                    echo "<td>" . ($i * $j) . "</td>";
+                }
+                echo "</tr>";
+            }
+            
+            echo "</table>";
+        } else {
+            echo "<p>Please enter a valid positive number.</p>"; //Will happen if the user doesn't enter a valid number
+        }
+    }
+    ?>
+
+</body>
+</html>
